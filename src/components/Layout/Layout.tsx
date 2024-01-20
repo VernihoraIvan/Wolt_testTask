@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 function Layout() {
   return (
     <>
-      <main>
+      <main className=" h-screen">
         <Header />
         <Outlet />
       </main>

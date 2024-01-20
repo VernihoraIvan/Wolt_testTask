@@ -1,7 +1,9 @@
 // import React from "react";
 
 function HomePage() {
-  return <div>Home Page</div>;
+  return (
+    <section className="  h-[90vh] bg-[url('/src/assets/images/background.jpeg')] bg-cover opacity-30"></section>
+  );
 }
 
 export default HomePage;
