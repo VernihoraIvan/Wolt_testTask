@@ -13,9 +13,10 @@
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^18.2.0", 
     "react-router-dom": "^6.21.3",
     "react-svg": "^16.1.32",
+    "react-tailwindcss-datepicker": "^1.6.6",
     "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {

@@ -1,8 +1,10 @@
 // import React from 'react'
 import ReactDom from "react-dom";
+import DatePickerComponent from "../DatePicker/DatePicker";
 
 function CalculatorModalWindow() {
   const portal = document.getElementById("portal")!;
+
   return ReactDom.createPortal(
     <div className="h-screen w-screen fixed top-0 left-0 flex justify-center items-center ">
       <div className=" h-3/4 w-1/2 flex justify-center items-center flex-col gap-4 bg-white rounded-3xl">
@@ -51,15 +53,18 @@ function CalculatorModalWindow() {
                 />
               </label>
             </li>
-            <li>
-              <label htmlFor="time">
+            <li className="w-full">
+              {/* <label htmlFor="time">
                 Time:
                 <input type="date" id="time" name="time" />
-              </label>
+              </label> */}
+              <DatePickerComponent />
             </li>
           </ul>
         </div>
-        <button>Calculate delivery price</button>
+        <button className="pr-3 pl-3 pt-1 pb-1 bg-sky-400 rounded-md hover:bg-sky-500 transition ease-in-out delay-250">
+          Calculate delivery price
+        </button>
         <p>Delivery price: </p>
       </div>
     </div>,
