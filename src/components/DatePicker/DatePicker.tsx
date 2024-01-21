@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 
 function DatePickerComponent() {
@@ -8,7 +8,7 @@ function DatePickerComponent() {
   });
 
   const handleValueChange = (newValue) => {
-    // console.log("newValue:", newValue);
+    console.log("newValue:", newValue);
     setValue(newValue);
   };
   return (
@@ -25,3 +25,21 @@ function DatePickerComponent() {
 }
 
 export default DatePickerComponent;
+
+// import { useState } from "react";
+// import { DtPicker } from "react-calendar-datetime-picker";
+// import "react-calendar-datetime-picker/dist/style.css";
+
+// const DatePicker = () => {
+//   const [date, setDate] = useState(null);
+//   return (
+//     <DtPicker
+//       onChange={setDate}
+//       type="single"
+//       local="en"
+//       withTime
+//       showWeekend
+//     />
+//   );
+// };
+// export default DatePicker;

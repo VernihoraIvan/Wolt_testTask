@@ -1,6 +1,7 @@
 // import React from 'react'
 import ReactDom from "react-dom";
 import DatePickerComponent from "../DatePicker/DatePicker";
+import TimePickerComponent from "../Timepicker/TimePicker";
 
 function CalculatorModalWindow() {
   const portal = document.getElementById("portal")!;
@@ -59,6 +60,7 @@ function CalculatorModalWindow() {
                 <input type="date" id="time" name="time" />
               </label> */}
               <DatePickerComponent />
+              <TimePickerComponent />
             </li>
           </ul>
         </div>
