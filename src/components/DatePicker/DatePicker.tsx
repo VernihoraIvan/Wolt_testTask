@@ -1,23 +1,26 @@
 import { useState } from "react";
-import Datepicker from "react-tailwindcss-datepicker";
+import Datepicker, { DateValueType } from "react-tailwindcss-datepicker";
 
-function DatePickerComponent() {
-  const [value, setValue] = useState({
-    startDate: null,
-    endDate: null,
-  });
+interface Props {
+  onChange: (newValue: string) => void;
+}
 
-  const handleValueChange = (newValue) => {
+function DatePickerComponent({ onChange }: Props) {
+  const [value, setValue] = useState<string>("");
+
+  const handleValueChange = (newValue: DateValueType): void => {
     console.log("newValue:", newValue);
-    setValue(newValue);
+    onChange(newValue?.startDate as string);
+    setValue(newValue?.startDate as string);
   };
+
   return (
     <div className="flex flex-row justify-between items-center">
       <p className="mr-16">Time</p>
       <Datepicker
         useRange={false}
         asSingle={true}
-        value={value}
+        value={{ startDate: value, endDate: "" }}
         onChange={handleValueChange}
       />
     </div>
@@ -25,21 +28,3 @@ function DatePickerComponent() {
 }
 
 export default DatePickerComponent;
-
-// import { useState } from "react";
-// import { DtPicker } from "react-calendar-datetime-picker";
-// import "react-calendar-datetime-picker/dist/style.css";
-
-// const DatePicker = () => {
-//   const [date, setDate] = useState(null);
-//   return (
-//     <DtPicker
-//       onChange={setDate}
-//       type="single"
-//       local="en"
-//       withTime
-//       showWeekend
-//     />
-//   );
-// };
-// export default DatePicker;
