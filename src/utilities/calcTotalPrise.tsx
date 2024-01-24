@@ -1,11 +1,9 @@
-import dayjs from "dayjs";
-
 export interface FeeInput {
   cartValue: number;
   deliveryDistance: number;
   amountOfItems: number;
-  date: string;
-  time: string;
+  date: string | undefined;
+  time: number | undefined;
 }
 
 const countDeliveryFee = (deliveryDistance: number): number => {
@@ -13,11 +11,6 @@ const countDeliveryFee = (deliveryDistance: number): number => {
   if (deliveryDistance <= 1000) {
     return result;
   }
-  console.log(
-    `countDeliveryFee: ${(result += Math.ceil(
-      (deliveryDistance - 1000) / 500
-    ))}`
-  );
   return (result += Math.ceil((deliveryDistance - 1000) / 500));
 };
 
@@ -26,30 +19,22 @@ const countBulkFee = (amountOfItems: number): number => {
   if (!amountOfItems || amountOfItems <= 4) {
     return result;
   } else if (amountOfItems <= 12) {
-    console.log(`countBulkFee ${(result = (amountOfItems - 4) * 0.5)}`);
     return (result = (amountOfItems - 4) * 0.5);
   } else {
-    console.log(`countBulkFee ${(result = (amountOfItems - 4) * 0.5 + 1.2)}`);
     return (result = (amountOfItems - 4) * 0.5 + 1.2);
   }
 };
 
-const isRushHours = (date: string, time: string): boolean => {
-  const formattedTime: number = Number(time.slice(0, 2));
-  console.log(`dayjs: ${dayjs(date)}`);
-  const formattedDay: string = dayjs(date).toString();
-  console.log(`time: ${formattedTime}// day: ${formattedDay}`);
-  console.log(formattedDay.slice(0, 3));
-  console.log(
-    formattedDay.slice(0, 3) === "Fri" &&
-      formattedTime >= 13 &&
-      formattedTime <= 19
-  );
-  return (
-    formattedDay.slice(0, 3) === "Fri" &&
-    formattedTime >= 13 &&
-    formattedTime <= 19
-  );
+const isRushHours = (
+  date: string | undefined,
+  time: number | undefined
+): boolean => {
+  if (!date || !time) {
+    return false;
+  }
+  const dd: string = date.toString().slice(0, 3);
+
+  return dd === "Fri" && time >= 13 && time < 19;
 };
 
 export const calcTotalPrise = ({
