@@ -38,7 +38,7 @@ function CalculatorModalWindow() {
   return ReactDom.createPortal(
     <div className="h-screen w-screen fixed top-8 left-0 flex justify-center items-center ">
       <div className=" h-3/4 w-1/2 flex justify-center items-center flex-col gap-4 bg-white rounded-3xl">
-        <h2 className="mb-20 text-xl">Delivery Fee Calculator</h2>
+        <h1 className="mb-20 text-xl">Delivery Fee Calculator</h1>
         <div>
           <ul className="flex justify-between items-start flex-col gap-4">
             <li className="w-full">
@@ -48,6 +48,7 @@ function CalculatorModalWindow() {
               >
                 Cart Value
                 <input
+                  data-test-id="cartValue"
                   onChange={(e) => setCartValue(Number(e.target.value))}
                   className="bg-indigo-50 rounded-lg px-2 outline-sky-400"
                   type="text"
@@ -63,6 +64,7 @@ function CalculatorModalWindow() {
               >
                 Delivery Distance
                 <input
+                  data-test-id="deliveryDistance"
                   onChange={(e) => setDeliveryDistance(Number(e.target.value))}
                   className="bg-indigo-50 rounded-lg px-2 outline-sky-400"
                   type="text"
@@ -78,6 +80,7 @@ function CalculatorModalWindow() {
               >
                 Amount of Items
                 <input
+                  data-test-id="amountOfItems"
                   onChange={(e) => setAmountOfItems(Number(e.target.value))}
                   className="bg-indigo-50 rounded-lg px-2 outline-sky-400"
                   type="text"
@@ -95,13 +98,14 @@ function CalculatorModalWindow() {
           </ul>
         </div>
         <button
+          type="button"
           onClick={onSubmit}
-          tabIndex={2}
+          tabIndex={0}
           className="pr-3 pl-3 pt-1 pb-1 bg-sky-400 rounded-md hover:bg-sky-500 transition ease-in-out delay-250"
         >
           Calculate delivery price
         </button>
-        <p>Delivery price: {Fee || 0} $</p>
+        <p data-test-id="fee">Delivery price: {Fee || 0} $</p>
       </div>
     </div>,
     portal

@@ -34,20 +34,25 @@ export default function DateTimeComponent({
       onChangeDate(dateValue.$d);
     }
   };
+  const inputAttribute: object = { "data-test-id": "fee" };
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={["TimeField"]}>
         <TimeField
+          className="timePicker"
           onChange={handleTimeChange}
           format="HH:mm"
-          label="Basic time field"
+          label="Choose a delivery time"
+          inputProps={inputAttribute}
         />
       </DemoContainer>
       <DemoContainer components={["DatePicker"]}>
         <DatePicker
+          className="datePicker"
+          // inputRef={ref}
           onChange={handleDateChange}
           value={value}
-          label="Basic date picker"
+          label="Choose a delivery day"
           format="DD-MM-YYYY"
         />
       </DemoContainer>
