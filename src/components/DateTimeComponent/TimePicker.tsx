@@ -39,7 +39,7 @@ export default function DateTimeComponent({
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={["TimeField"]}>
         <TimeField
-          className="timePicker"
+          className="timePicker xl:w-full"
           onChange={handleTimeChange}
           format="HH:mm"
           label="Choose a delivery time"
@@ -48,7 +48,8 @@ export default function DateTimeComponent({
       </DemoContainer>
       <DemoContainer components={["DatePicker"]}>
         <DatePicker
-          className="datePicker"
+          disablePast={true}
+          className="datePicker xl:w-full"
           // inputRef={ref}
           onChange={handleDateChange}
           value={value}
