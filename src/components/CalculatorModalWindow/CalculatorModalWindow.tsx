@@ -2,9 +2,10 @@ import ReactDom from "react-dom";
 import { useState } from "react";
 import { calcTotalPrise } from "../../utilities/calcTotalPrise";
 import DateTimeComponent from "../DateTimeComponent/TimePicker";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { determineWarning, toShowFee } from "../../utilities/determineWarning";
+import Input from "../Input/Input";
 
 export interface arguements {
   cartValue: number;
@@ -14,6 +15,8 @@ export interface arguements {
   time: number | undefined;
 }
 
+// type InputChangeCallback = (value: number) => void;
+
 function CalculatorModalWindow() {
   const portal = document.getElementById("portal")!;
 
@@ -22,7 +25,7 @@ function CalculatorModalWindow() {
   const [amountOfItems, setAmountOfItems] = useState(-1);
   const [date, setDate] = useState<string | undefined>("");
   const [time, setTime] = useState<number | undefined>(0);
-  const [isHidden, setIsHidden] = useState<boolean>(true);
+  const [isShown, setIsShown] = useState<boolean>(false);
 
   const allStateValues: arguements = {
     cartValue,
@@ -31,8 +34,6 @@ function CalculatorModalWindow() {
     date,
     time,
   };
-  // determineWarning();
-  // console.log("determinWarn", determineWarning(allStateValues));
   const isFeeShown = toShowFee({
     cartValue,
     deliveryDistance,
@@ -43,29 +44,38 @@ function CalculatorModalWindow() {
 
   const onChangeDate = (dateValue: string | undefined) => {
     setDate(dateValue);
+    setIsShown(false);
   };
 
   const onChangeTime = (timeValue: number | undefined) => {
     setTime(timeValue);
+    setIsShown(false);
   };
+
+  // const onInputChange = (
+  //   event: React.ChangeEvent<HTMLInputElement>,
+  //   callback: Function
+  // ) => {
+  //   callback(Number(event.target.value));
+  // };
+  // const onInputChange = (
+  //   event: React.ChangeEvent<HTMLInputElement>,
+  //   callback: InputChangeCallback
+  // ) => {
+  //   callback(Number(event.target.value));
+  //   setIsShown(false);
+  // };
 
   const onSubmit = () => {
     if (determineWarning(allStateValues) !== "show") {
       toast.warn(determineWarning(allStateValues), {
-        position: "bottom-left",
+        position: "top-right",
       });
+      setIsShown(false);
     } else {
-      setIsHidden(false);
+      setIsShown(true);
     }
-    calcTotalPrise({
-      cartValue,
-      deliveryDistance,
-      amountOfItems,
-      date,
-      time,
-    });
-
-    // console.log("determinWarn", determineWarning(allStateValues));
+    calcTotalPrise(allStateValues);
   };
 
   let fee: number = 0;
@@ -82,57 +92,75 @@ function CalculatorModalWindow() {
 
   return ReactDom.createPortal(
     <div className="h-screen w-screen fixed top-8 left-0 flex justify-center items-center ">
-      <div className=" h-3/4 w-1/2 flex justify-center items-center flex-col gap-4 bg-white rounded-3xl">
+      <div className=" h-3/4 w-1/2 flex justify-center items-center flex-col gap-4 bg-white rounded-3xl shadow-xl">
         <h1 className="mb-20 text-xl">Delivery Fee Calculator</h1>
         <div>
           <ul className="flex justify-between items-start flex-col gap-4">
             <li className="w-full">
-              <label
+              {/* <label
                 className="flex-row justify-between flex gap-10 items-center"
                 htmlFor="cartValue"
               >
                 Cart Value
                 <input
                   data-test-id="cartValue"
-                  onChange={(e) => setCartValue(Number(e.target.value))}
+                  onChange={(e) => onInputChange(e, setCartValue)}
                   className="bg-indigo-50 rounded-lg px-2 py-1 outline-sky-400 "
                   type="text"
                   name="cartValue"
                   id="cartValue"
                 />
-              </label>
+              </label> */}
+              <Input
+                attribute={"cartValue"}
+                inputName={"Cart Value"}
+                onInputChange={setCartValue}
+                setIsShown={setIsShown}
+              />
             </li>
             <li className="w-full">
-              <label
+              {/* <label
                 className="flex-row justify-between flex gap-10 items-center"
                 htmlFor="deliveryDistance"
               >
                 Delivery Distance
                 <input
                   data-test-id="deliveryDistance"
-                  onChange={(e) => setDeliveryDistance(Number(e.target.value))}
+                  onChange={(e) => onInputChange(e, setDeliveryDistance)}
                   className="bg-indigo-50 rounded-lg px-2 py-1 outline-sky-400"
                   type="text"
                   name="deliveryDistance"
                   id="deliveryDistance"
                 />
-              </label>
+              </label> */}
+              <Input
+                attribute={"deliveryDistance"}
+                inputName={"Delivery Distance"}
+                onInputChange={setDeliveryDistance}
+                setIsShown={setIsShown}
+              />
             </li>
             <li className="w-full">
-              <label
+              {/* <label
                 className="flex-row justify-between flex gap-10 items-center"
                 htmlFor="amountOfItems"
               >
                 Amount of Items
                 <input
                   data-test-id="amountOfItems"
-                  onChange={(e) => setAmountOfItems(Number(e.target.value))}
+                  onChange={(e) => onInputChange(e, setAmountOfItems)}
                   className="bg-indigo-50 rounded-lg px-2 py-1 outline-sky-400"
                   type="text"
                   name="amountOfItems"
                   id="amountOfItems"
                 />
-              </label>
+              </label> */}
+              <Input
+                attribute={"amountOfItems"}
+                inputName={"Amount of Items"}
+                onInputChange={setAmountOfItems}
+                setIsShown={setIsShown}
+              />
             </li>
             <li className="  w-full focus-visible:outline-sky-400 active:outline-sky-400 outline-sky-400 li_item_pickers">
               <DateTimeComponent
@@ -150,11 +178,10 @@ function CalculatorModalWindow() {
         >
           Calculate delivery price
         </button>
-        {!isHidden && (
-          <p data-test-id="fee">Delivery price: {fee.toFixed(2)}$ </p>
+        {isShown && (
+          <p data-test-id="fee">Delivery price: {fee.toFixed(2)} € </p>
         )}
       </div>
-      <ToastContainer />
     </div>,
     portal
   );

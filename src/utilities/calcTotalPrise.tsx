@@ -49,15 +49,15 @@ export const calcTotalPrise = ({
     return totalFee;
   }
   if (cartValue >= 200) {
-    return cartValue;
+    return totalFee;
   }
   totalFee += countDeliveryFee(deliveryDistance) + countBulkFee(amountOfItems);
   if (isRushHours(date, time)) {
     totalFee *= 1.2;
   }
   if (totalFee > 15) {
-    return 15 + cartValue;
+    return 15;
   }
 
-  return totalFee + cartValue;
+  return totalFee;
 };
