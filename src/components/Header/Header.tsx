@@ -6,16 +6,19 @@ import { useThemeContext } from "../../utilities/useModalContext";
 
 function Header() {
   const { lightTheme } = useThemeContext();
-  let themeStyle: string = " bg-white";
+  let headerStyle: string = " bg-white";
+  let iconStyle: string =
+    "h-14 w-14 ml-5 align-middle  fill-black shadow-black	";
   if (!lightTheme) {
-    themeStyle = "bg-bgDarkTheme";
+    headerStyle = "bg-bgDarkTheme";
+    iconStyle = "h-14 w-14 ml-5 align-middle fill-slate-400";
   }
   return (
     <header
-      className={`shadow-xl ${themeStyle} w-full z-1 h-[10vh] flex items-center`}
+      className={`   shadow-2xl  ${headerStyle} w-full z-1 h-[10vh] flex items-center`}
     >
       <NavLink to="https://wolt.com/en/discovery">
-        <WoltLogo className="h-14 w-14 ml-5 align-middle" />
+        <WoltLogo className={iconStyle} />
       </NavLink>
     </header>
   );

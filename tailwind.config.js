@@ -27,7 +27,9 @@ export default {
       colors: {
         bluesp: "#0ea5e9",
         bgDarkTheme: "#1e293b",
-        buttonDark: "#6366f1",
+        buttonDark: "#292ef2",
+        buttonDarkHov: "#0c11e8",
+        inputDark: "#363663",
       },
     },
   },

@@ -6,7 +6,7 @@ function Layout() {
   const { lightTheme } = useThemeContext();
   let themeStyle: string = " bg-white";
   if (!lightTheme) {
-    themeStyle = "bg-slate-700	text-slate-200";
+    themeStyle = "bg-slate-700	text-slate-400";
   }
 
   return (

@@ -49,7 +49,9 @@ export default function DateTimeComponent({
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={["DatePicker", "TimeField"]}>
-        <div className={` ${themeStyle} pickerContainer  w-full`}>
+        <div
+          className={` ${themeStyle} pickerContainer  w-full flex gap-2 flex-col`}
+        >
           <DatePicker
             disablePast={true}
             className="datePicker w-full text-slate-400"

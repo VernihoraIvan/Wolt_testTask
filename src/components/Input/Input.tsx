@@ -1,3 +1,5 @@
+import { useThemeContext } from "../../utilities/useModalContext";
+
 interface InputProps {
   attribute: string;
   inputName: string;
@@ -18,6 +20,12 @@ function Input({
     eventCallback(Number(event.target.value));
     setIsShown(false);
   };
+
+  const { lightTheme } = useThemeContext();
+  let themeStyle: string = " bg-indigo-50";
+  if (!lightTheme) {
+    themeStyle = "bg-inputDark";
+  }
   return (
     <label
       className="flex-row justify-between flex gap-10 items-center"
@@ -27,7 +35,7 @@ function Input({
       <input
         data-test-id={attribute}
         onChange={(event) => onInputChangeFinal(event, onInputChange)}
-        className="bg-indigo-50 rounded-lg px-2 py-1 outline-sky-400 "
+        className={`${themeStyle} shadow-inner rounded-lg px-2 py-1 outline-sky-400`}
         type="text"
         name={attribute}
         id={attribute}

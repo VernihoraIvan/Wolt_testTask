@@ -1,4 +1,3 @@
-// import ReactDom from "react-dom";
 import { useState } from "react";
 import { FeeInput, calcTotalPrise } from "../../utilities/calculateTotalPrise";
 import DateTimeComponent from "../DateTimeComponent/TimePicker";
@@ -6,10 +5,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { showNotification } from "../../utilities/showNotification";
 import Input from "../Input/Input";
 import { useThemeContext } from "../../utilities/useModalContext";
+import Button from "../Button/Button";
 
 function CalculatorModalWindow() {
-  // const portal = document.getElementById("portal")!;
-
   const [cartValue, setCartValue] = useState<number>(-1);
   const [deliveryDistance, setDeliveryDistance] = useState<number>(-1);
   const [amountOfItems, setAmountOfItems] = useState<number>(-1);
@@ -53,9 +51,6 @@ function CalculatorModalWindow() {
   }
 
   return (
-    // ReactDom.createPortal
-    // (
-    // <div className="h-screen w-screen  flex justify-center items-center ">
     <div
       className={` max-w-lg max-h-xl py-10 px-20 flex justify-center items-center flex-col gap-4 ${themeStyle} rounded-3xl shadow-xl mx-auto my-auto`}
     >
@@ -88,7 +83,7 @@ function CalculatorModalWindow() {
               setIsShown={setIsShown}
             />
           </li>
-          <li className="  w-full focus-visible:outline-sky-400 active:outline-sky-400 outline-sky-400 li_item_pickers">
+          <li className="w-full focus-visible:outline-sky-400 active:outline-sky-400 outline-sky-400 li_item_pickers">
             <DateTimeComponent
               onChangeTime={onChangeTime}
               onChangeDate={onChangeDate}
@@ -96,18 +91,9 @@ function CalculatorModalWindow() {
           </li>
         </ul>
       </div>
-      <button
-        type="button"
-        onClick={onSubmit}
-        tabIndex={0}
-        className="pr-3 pl-3 pt-1 pb-1 bg-sky-400 rounded-md hover:bg-sky-500  transition ease-in-out delay-250 active-sky-500 "
-      >
-        Calculate delivery price
-      </button>
+      <Button onClick={onSubmit} />
       {isShown && <p data-test-id="fee">Delivery price: {fee} € </p>}
     </div>
-    // </div>
-    // portal
   );
 }
 

@@ -1,42 +1,29 @@
-// import React from "react";
 import ThemeIcon from "../../assets/images/theme.svg?react";
-// import { useThemeContext } from "../../utilities/useModalContext";
-// import { ThemeProvider } from "../../utilities/themeContext";
 import CalculatorModalWindow from "../../components/CalculatorModalWindow/CalculatorModalWindow";
-// import { useState } from "react";
 import { useThemeContext } from "../../utilities/useModalContext";
 
 function HomePage() {
-  // const [lightTheme, setLightTheme] = useState(true);
-
-  // const toggleTheme = () => {
-  //   setLightTheme(!lightTheme);
-  // };
-
-  // if (!lightTheme) {
-  //   themeStyle = "bg-slate-700	text-slate-200";
-  // }
-
-  /////////////////////////////
   const { lightTheme, toggleTheme } = useThemeContext();
-  let themeStyle: string = " bg-white";
+  let sectionStyle: string = " bg-white";
+  let buttonStyle: string = "bg-sky-400 hover:bg-sky-500";
   if (!lightTheme) {
-    themeStyle = "bg-slate-700	text-slate-200";
+    sectionStyle = "bg-slate-700	text-slate-400";
+    buttonStyle = "bg-buttonDark hover:bg-buttonDarkHov fill-white";
   }
-  console.log(themeStyle);
+  console.log(sectionStyle);
 
   return (
     <section
-      className={`dark:bg-gray-800 dark:border-gray-700 pt-10 h-[90vh] bg-cover
+      className={`  pt-10 h-[90vh] bg-cover
         ${lightTheme && 'bg-[url("/src/assets/images/background.jpg")]'} ${
         !lightTheme && 'bg-[url("/src/assets/images/background-dark.jpg")]'
       } `}
     >
       <div
-        className="w-8 h-8 bg-bluesp cursor-pointer absolute top-7 right-5 flex justify-center items-center rounded-lg"
+        className={`w-8 h-8 ${buttonStyle}  cursor-pointer absolute top-7 right-5 flex justify-center items-center rounded-lg`}
         onClick={toggleTheme}
       >
-        <ThemeIcon className="w-5 h-5" />
+        <ThemeIcon className="w-5 h-5 " />
       </div>
       <CalculatorModalWindow />
     </section>
