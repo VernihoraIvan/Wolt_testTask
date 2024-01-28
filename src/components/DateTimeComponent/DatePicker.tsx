@@ -5,11 +5,11 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useState } from "react";
 
 export default function BasicDatePicker() {
-  const [value, setData] = useState<string | null>("");
-  // console.log(value);
+  const [value, setData] = useState<string>("");
   const handleChange = (value: string | null) => {
-    setData(value);
+    setData(value as string);
   };
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={["DatePicker"]}>
@@ -22,3 +22,8 @@ export default function BasicDatePicker() {
     </LocalizationProvider>
   );
 }
+
+// setting attribute for testing purposes
+const inputParent = document.querySelector(".datePicker");
+const input = inputParent?.querySelector("input");
+input?.setAttribute("data-test-id", "fee");

@@ -1,21 +1,3 @@
-// // type InputChangeCallback = (event: React.ChangeEvent<HTMLInputElement>) => void;
-// type InputChangeCallback = (value: number) => void;
-
-// type OnInputChangeProp = (
-//   event: React.ChangeEvent<HTMLInputElement>,
-//   callback: InputChangeCallback
-// ) => void;
-
-// export interface InputProps {
-//   attribute: string;
-//   inputName: string;
-//   //   onInputChange: OnInputChangeProp;
-//   onInputChange: (
-//     event: React.ChangeEvent<HTMLInputElement>,
-//     callback: InputChangeCallback
-//   ) => void;
-// }
-
 interface InputProps {
   attribute: string;
   inputName: string;
@@ -31,9 +13,9 @@ function Input({
 }: InputProps) {
   const onInputChangeFinal = (
     event: React.ChangeEvent<HTMLInputElement>,
-    callback: (value: number) => void
+    eventCallback: (value: number) => void
   ) => {
-    callback(Number(event.target.value));
+    eventCallback(Number(event.target.value));
     setIsShown(false);
   };
   return (

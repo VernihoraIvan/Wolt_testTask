@@ -19,3 +19,26 @@ ol {
   border-radius: 136px;
   outline-color: #38bdf8;
 }
+
+input,
+label {
+  color: currentColor;
+}
+
+.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl {
+  color: currentColor;
+}
+.MuiButtonBase-root.MuiIconButton-root {
+  color: currentColor;
+}
+div
+  .MuiInputBase-root
+  .MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border-color: currentColor;
+}
+.pickerContainer div {
+  color: currentColor;
+}
+.pickerContainer label {
+  color: currentColor;
+}

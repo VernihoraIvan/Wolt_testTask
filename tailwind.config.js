@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -19,6 +20,14 @@ export default {
 
         xl: { min: "1200px" },
         // => @media (min-width: 1280px and max-width: 1535px) { ... }
+      },
+      spacing: {
+        7: "1.5rem",
+      },
+      colors: {
+        bluesp: "#0ea5e9",
+        bgDarkTheme: "#1e293b",
+        buttonDark: "#6366f1",
       },
     },
   },

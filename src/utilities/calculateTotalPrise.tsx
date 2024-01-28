@@ -2,20 +2,23 @@ export interface FeeInput {
   cartValue: number;
   deliveryDistance: number;
   amountOfItems: number;
-  date: string | undefined;
-  time: number | undefined;
+  date: string;
+  time: number;
 }
 
 const countDeliveryFee = (deliveryDistance: number): number => {
   let result: number = 2;
+
   if (deliveryDistance <= 1000) {
     return result;
   }
+
   return (result += Math.ceil((deliveryDistance - 1000) / 500));
 };
 
 const countBulkFee = (amountOfItems: number): number => {
   let result: number = 0;
+
   if (!amountOfItems || amountOfItems <= 4) {
     return result;
   } else if (amountOfItems <= 12) {
@@ -25,16 +28,13 @@ const countBulkFee = (amountOfItems: number): number => {
   }
 };
 
-const isRushHours = (
-  date: string | undefined,
-  time: number | undefined
-): boolean => {
+const isRushHours = (date: string, time: number): boolean => {
   if (!date || !time) {
     return false;
   }
-  const dd: string = date.toString().slice(0, 3);
+  const day: string = date.toString().slice(0, 3);
 
-  return dd === "Fri" && time >= 13 && time < 19;
+  return day === "Fri" && time >= 13 && time <= 18;
 };
 
 export const calcTotalPrise = ({
@@ -45,18 +45,19 @@ export const calcTotalPrise = ({
   time,
 }: FeeInput) => {
   let totalFee: number = 0;
-  if (!amountOfItems || !cartValue) {
+
+  if (!(amountOfItems || cartValue) || cartValue >= 200) {
     return totalFee;
   }
-  if (cartValue >= 200) {
-    return totalFee;
-  }
+
   totalFee += countDeliveryFee(deliveryDistance) + countBulkFee(amountOfItems);
+
   if (isRushHours(date, time)) {
     totalFee *= 1.2;
   }
+
   if (totalFee > 15) {
-    return 15;
+    totalFee = 15;
   }
 
   return totalFee;
