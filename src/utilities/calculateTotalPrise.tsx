@@ -1,9 +1,11 @@
+import { Dayjs } from "dayjs";
+
 export interface FeeInput {
   cartValue: number;
   deliveryDistance: number;
   amountOfItems: number;
-  date: string;
-  time: number;
+  date: Dayjs;
+  time: Dayjs;
 }
 
 const countDeliveryFee = (deliveryDistance: number): number => {
@@ -28,13 +30,14 @@ const countBulkFee = (amountOfItems: number): number => {
   }
 };
 
-const isRushHours = (date: string, time: number): boolean => {
+const isRushHours = (date: Dayjs, time: Dayjs): boolean => {
   if (!date || !time) {
     return false;
   }
-  const day: string = date.toString().slice(0, 3);
+  const day: number = date.day();
+  const hour: number = time.hour();
 
-  return day === "Fri" && time >= 13 && time <= 18;
+  return day === 5 && hour >= 13 && hour <= 18;
 };
 
 export const calcTotalPrise = ({
@@ -45,7 +48,7 @@ export const calcTotalPrise = ({
   time,
 }: FeeInput) => {
   let totalFee: number = 0;
-
+  const minCartValue = 10;
   if (!(amountOfItems || cartValue) || cartValue >= 200) {
     return totalFee;
   }
@@ -58,6 +61,9 @@ export const calcTotalPrise = ({
 
   if (totalFee > 15) {
     totalFee = 15;
+  }
+  if (cartValue < minCartValue) {
+    totalFee += minCartValue - cartValue;
   }
 
   return totalFee;

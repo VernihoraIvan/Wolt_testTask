@@ -31,14 +31,6 @@ label {
 .MuiButtonBase-root.MuiIconButton-root {
   color: currentColor;
 }
-div
-  .MuiInputBase-root
-  .MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-  border-color: currentColor;
-}
 .pickerContainer div {
-  color: currentColor;
-}
-.pickerContainer label {
   color: currentColor;
 }

@@ -4,23 +4,17 @@ import { useThemeContext } from "../../utilities/useModalContext";
 
 function HomePage() {
   const { lightTheme, toggleTheme } = useThemeContext();
-  let sectionStyle: string = " bg-white";
-  let buttonStyle: string = "bg-sky-400 hover:bg-sky-500";
+  let sectionStyle: string = 'bg-[url("/src/assets/images/background.jpg")]';
+  let buttonStyle: string = "bg-sky-400 hover:bg-sky-500 fill-iconDark";
   if (!lightTheme) {
-    sectionStyle = "bg-slate-700	text-slate-400";
-    buttonStyle = "bg-buttonDark hover:bg-buttonDarkHov fill-white";
+    sectionStyle = 'bg-[url("/src/assets/images/background-dark1.jpg")]';
+    buttonStyle = "bg-buttonDark hover:bg-buttonDarkHov fill-darkSecondText";
   }
-  console.log(sectionStyle);
 
   return (
-    <section
-      className={`  pt-10 h-[90vh] bg-cover
-        ${lightTheme && 'bg-[url("/src/assets/images/background.jpg")]'} ${
-        !lightTheme && 'bg-[url("/src/assets/images/background-dark.jpg")]'
-      } `}
-    >
+    <section className={`  pt-10 h-screen bg-cover ${sectionStyle}`}>
       <div
-        className={`w-8 h-8 ${buttonStyle}  cursor-pointer absolute top-7 right-5 flex justify-center items-center rounded-lg`}
+        className={` w-8 h-8 ${buttonStyle}  cursor-pointer absolute top-7 right-5 flex justify-center items-center rounded-lg`}
         onClick={toggleTheme}
       >
         <ThemeIcon className="w-5 h-5 " />

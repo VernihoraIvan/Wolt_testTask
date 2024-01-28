@@ -6,13 +6,14 @@ import { showNotification } from "../../utilities/showNotification";
 import Input from "../Input/Input";
 import { useThemeContext } from "../../utilities/useModalContext";
 import Button from "../Button/Button";
+import dayjs, { Dayjs } from "dayjs";
 
 function CalculatorModalWindow() {
   const [cartValue, setCartValue] = useState<number>(-1);
   const [deliveryDistance, setDeliveryDistance] = useState<number>(-1);
   const [amountOfItems, setAmountOfItems] = useState<number>(-1);
-  const [date, setDate] = useState<string>("");
-  const [time, setTime] = useState<number>(0);
+  const [date, setDate] = useState<Dayjs>(dayjs());
+  const [time, setTime] = useState<Dayjs>(dayjs());
   const [isShown, setIsShown] = useState<boolean>(false);
 
   let fee: number = 0;
@@ -25,13 +26,13 @@ function CalculatorModalWindow() {
     time,
   };
 
-  const onChangeDate = (dateValue: string | undefined): void => {
-    setDate(dateValue as string);
+  const onChangeDate = (dateValue: Dayjs): void => {
+    setDate(dateValue);
     setIsShown(false);
   };
 
-  const onChangeTime = (timeValue: number | undefined): void => {
-    setTime(timeValue as number);
+  const onChangeTime = (timeValue: Dayjs): void => {
+    setTime(timeValue);
     setIsShown(false);
   };
 
@@ -52,7 +53,7 @@ function CalculatorModalWindow() {
 
   return (
     <div
-      className={` max-w-lg max-h-xl py-10 px-20 flex justify-center items-center flex-col gap-4 ${themeStyle} rounded-3xl shadow-xl mx-auto my-auto`}
+      className={`mt-20 max-w-lg max-h-xl py-10 px-20 flex justify-center items-center flex-col gap-4 ${themeStyle} rounded-3xl shadow-xl mx-auto my-auto`}
     >
       <h1 className="mb-10 text-xl">Delivery Fee Calculator</h1>
       <div>
