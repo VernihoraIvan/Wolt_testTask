@@ -2,7 +2,7 @@
 
 ![image](./src/assets/images/demo.png)
 
-This is the **front-end** assignment for the [software engineering 2023](<https://careers.wolt.com/en/jobs/software-engineer-intern-(2024)/817d412#apply-now>).
+This is the **front-end** assignment for the [software engineering 2024](<https://careers.wolt.com/en/jobs/software-engineer-intern-(2024)/817d412#apply-now>).
 
 ## Link to Live Demo
 
@@ -15,7 +15,7 @@ This is the **front-end** assignment for the [software engineering 2023](<https:
 Clone this repository to the desired location
 
 ```Shell
-git clone git@github.com:woltapp/wolt_discovery_app.git
+git clone git@github.com:VernihoraIvan/Wolt_testTask.git
 ```
 
 ## Installing Project Dependencies

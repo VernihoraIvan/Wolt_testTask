@@ -34,3 +34,7 @@ label {
 .pickerContainer div {
   color: currentColor;
 }
+
+input.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+  color: rgba(156, 155, 155, 0.4);
+}
