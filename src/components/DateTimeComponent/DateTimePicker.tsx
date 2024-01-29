@@ -32,7 +32,14 @@ export default function DateTimeComponent({
   if (!lightTheme) {
     themeStyle = "	text-slate-400";
   }
-  const inputAttribute: object = { "data-test-id": "fee" };
+
+  //setting attribute for testing purposes
+  const inputParent = document.querySelector(".datePicker");
+  const input = inputParent?.querySelector("input");
+  input?.setAttribute("data-test-id", "orderDate");
+
+  const inputAttribute: object = { "data-test-id": "orderTime" };
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={["DatePicker", "TimeField"]}>

@@ -1,30 +1,49 @@
-# React + TypeScript + Vite
+# Wolt's Front-End Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![image](./src/assets/images/demo.png)
 
-Currently, two official plugins are available:
+This is the **front-end** assignment for the [software engineering 2023](<https://careers.wolt.com/en/jobs/software-engineer-intern-(2024)/817d412#apply-now>).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Link to Live Demo
 
-## Expanding the ESLint configuration
+[Delivery Fee Calculator Demo](https://leafy-arithmetic-cae510.netlify.app/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+> Check the assignment instructions [here](https://github.com/woltapp/engineering-internship-2024?tab=readme-ov-file)
 
-- Configure the top-level `parserOptions` property like this:
+## Usage
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Clone this repository to the desired location
+
+```Shell
+git clone git@github.com:woltapp/wolt_discovery_app.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Installing Project Dependencies
+
+```
+npm i
+```
+
+## Serving
+
+You can start the [development server](https://vitejs.dev/guide/cli.html#dev-server) with:
+
+```
+npm run dev
+```
+
+Or if you prefer, you can [build](https://vitejs.dev/guide/cli.html#build) the project:
+
+```
+npm run build
+```
+
+Then use vite's [preview](https://vitejs.dev/guide/cli.html#vite-preview) feature, which basically **builds** the project, and starts a local server with the React bundled app:
+
+```
+npm run preview
+```
+
+> I use [Vite](https://vitejs.dev/) to build and serve the app locally:
+
+# React + TypeScript + Vite

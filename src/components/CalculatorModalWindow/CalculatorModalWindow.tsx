@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FeeInput, calcTotalPrise } from "../../utilities/calculateTotalPrise";
-import DateTimeComponent from "../DateTimeComponent/TimePicker";
+import DateTimeComponent from "../DateTimeComponent/DateTimePicker";
 import "react-toastify/dist/ReactToastify.css";
 import { showNotification } from "../../utilities/showNotification";
 import Input from "../Input/Input";
@@ -53,7 +53,7 @@ function CalculatorModalWindow() {
 
   return (
     <div
-      className={`mt-20 max-w-lg max-h-xl py-10 px-20 flex justify-center items-center flex-col gap-4 ${themeStyle} rounded-3xl shadow-xl mx-auto my-auto`}
+      className={`mt-20 max-w-lg max-h-xl py-10 px-18 flex justify-center items-center flex-col gap-4 ${themeStyle} rounded-3xl shadow-xl mx-auto my-auto`}
     >
       <h1 className="mb-10 text-xl">Delivery Fee Calculator</h1>
       <div>
