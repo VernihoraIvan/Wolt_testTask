@@ -93,7 +93,7 @@ function CalculatorModalWindow() {
         </ul>
       </div>
       <Button onClick={onSubmit} />
-      {isShown && <p data-test-id="fee">Delivery price: {fee} € </p>}
+      <p data-test-id="fee">Delivery price:{isShown && ` ${fee} €`} </p>
     </div>
   );
 }
