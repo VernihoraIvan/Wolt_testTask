@@ -28,7 +28,7 @@ function Input({
   }
   return (
     <label
-      className="flex-row justify-between flex gap-10 items-center"
+      className="flex-row xs:flex-col xs:gap-1 justify-between flex gap-10 items-center"
       htmlFor={attribute}
     >
       {inputName}

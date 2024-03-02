@@ -53,7 +53,7 @@ function CalculatorModalWindow() {
 
   return (
     <div
-      className={`mt-20 max-w-lg max-h-xl py-10 px-18 flex justify-center items-center flex-col gap-4 ${themeStyle} rounded-3xl shadow-xl mx-auto my-auto`}
+      className={`xs:w-11/12 mt-20 max-w-lg max-h-xl py-10 px-18 flex justify-center items-center flex-col gap-4 ${themeStyle} rounded-3xl shadow-xl mx-auto my-auto`}
     >
       <h1 className="mb-10 text-xl">Delivery Fee Calculator</h1>
       <div>
@@ -65,7 +65,7 @@ function CalculatorModalWindow() {
               onInputChange={setCartValue}
               setIsShown={setIsShown}
             />
-            <span className="absolute top-0 -right-5">€</span>
+            <span className="absolute top-0 -right-5 xs:right-6">€</span>
           </li>
           <li className="w-full relative">
             <Input
@@ -74,7 +74,7 @@ function CalculatorModalWindow() {
               onInputChange={setDeliveryDistance}
               setIsShown={setIsShown}
             />
-            <span className="absolute top-0 -right-5">m</span>
+            <span className="absolute top-0 -right-5 xs:right-6">m</span>
           </li>
           <li className="w-full">
             <Input

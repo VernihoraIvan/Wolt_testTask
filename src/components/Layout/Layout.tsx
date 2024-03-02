@@ -11,7 +11,7 @@ function Layout() {
 
   return (
     <>
-      <main className={`h-screen ${themeStyle} overflow-y-hidden`}>
+      <main className={`h-screen ${themeStyle} `}>
         <Header />
         <Outlet />
       </main>
