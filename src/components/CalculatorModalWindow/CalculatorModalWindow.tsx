@@ -56,7 +56,7 @@ function CalculatorModalWindow() {
       className={`xs:w-11/12 mt-20 max-w-lg max-h-xl py-10 px-18 flex justify-center items-center flex-col gap-4 ${themeStyle} rounded-3xl shadow-xl mx-auto my-auto`}
     >
       <h1 className="mb-10 text-xl">Delivery Fee Calculator</h1>
-      <div>
+      <div className="w-8/12	">
         <ul className="flex justify-between items-start flex-col gap-4">
           <li className="w-full relative">
             <Input

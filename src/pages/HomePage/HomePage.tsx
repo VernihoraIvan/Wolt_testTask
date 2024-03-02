@@ -14,7 +14,7 @@ function HomePage() {
   return (
     <section className={`  py-10 bg-cover ${sectionStyle}`}>
       <div
-        className={` w-8 h-8 ${buttonStyle}  cursor-pointer absolute xs:top-1 top-7 right-5 flex justify-center items-center rounded-lg`}
+        className={` w-8 h-8 ${buttonStyle}  cursor-pointer absolute   top-5 right-5 flex justify-center items-center rounded-lg`}
         onClick={toggleTheme}
       >
         <ThemeIcon className="w-5 h-5 " />

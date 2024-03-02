@@ -35,7 +35,7 @@ function Input({
       <input
         data-test-id={attribute}
         onChange={(event) => onInputChangeFinal(event, onInputChange)}
-        className={`${themeStyle} shadow-inner rounded-lg px-2 py-1 outline-sky-400`}
+        className={`${themeStyle} w-full shadow-inner rounded-lg px-2 py-1 outline-sky-400`}
         type="text"
         name={attribute}
         id={attribute}
